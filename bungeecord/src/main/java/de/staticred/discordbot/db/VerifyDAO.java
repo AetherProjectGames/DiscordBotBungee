@@ -393,6 +393,9 @@ public class VerifyDAO {
 
         DataBaseConnection con = DataBaseConnection.INSTANCE;
         if(DBVerifier.getInstance().debugMode) Debugger.debugMessage("Opening DB Connection from: VerifyDAO.isPlayerVerified");
+        if(!con.isConnectionOpened()) {
+            con.connect();
+        }
         PreparedStatement ps = con.getConnection().prepareStatement("SELECT * FROM verify WHERE UUID = ?");
         ps.setString(1,uuid.toString());
 
