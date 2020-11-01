@@ -189,11 +189,11 @@ public class MCVerifyCommandExecutor extends Command {
                 if (m.isOwner()) {
                     p.sendMessage(new TextComponent(DBVerifier.getInstance().getStringFromConfig("MemberIsOwner", false)));
                 } else {
-                    try {
+                    /*try {
                         m.getGuild().modifyNickname(m, p.getName()).queue();
                     } catch (HierarchyException e) {
                         Debugger.debugMessage("Can't modify a member with higher or equal highest role than the bot! Can't modify " + m.getNickname());
-                    }
+                    }*/
                 }
 
             }

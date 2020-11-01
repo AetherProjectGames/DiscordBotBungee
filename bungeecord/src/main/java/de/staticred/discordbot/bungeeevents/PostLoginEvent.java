@@ -118,26 +118,11 @@ public class PostLoginEvent implements Listener {
                 }
 
                 if(ConfigFileManager.INSTANCE.autoUpdate()) {
-                    DBVerifier.getInstance().removeAllRolesFromMember(m);
                     MemberManager.updateRoles(m,player);
-                }
-
-
-                if(DBVerifier.INSTANCE.syncNickname) {
-                    try {
-                        if (!m.isOwner()) {
-                            m.getGuild().modifyNickname(m, player.getName()).queue();
-                        }
-                    } catch (HierarchyException e) {
-                        Debugger.debugMessage("Can't modify a member with higher or equal highest role than the bot! Can't modify " + m.getNickname());
-                    }
                 }
 
                 DBVerifier.getInstance().playerSRVVerifiedHashMap.put(player.getUniqueId(), verified);
             });
-
-
-
 
         }catch (SQLException e) {
             Debugger.debugMessage("[INFO] A player which is not registered on the database joined the server. This must be a error by your networking system and the player will not be able to verify himself, or do any type of commands.");

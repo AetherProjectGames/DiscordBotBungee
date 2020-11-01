@@ -1,11 +1,13 @@
 package de.staticred.discordbot.files;
 
+import com.google.common.collect.Lists;
 import de.staticred.discordbot.DBVerifier;
 import de.staticred.discordbot.util.GroupInfo;
 import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.config.ConfigurationProvider;
 import net.md_5.bungee.config.YamlConfiguration;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.io.File;
 import java.io.IOException;
@@ -58,7 +60,7 @@ public class DiscordFileManager {
         return conf.getString(group + ".prefix");
     }
 
-    public @Nullable List<String> getAllGroups()  {
+    public @Nonnull List<String> getAllGroups()  {
         return conf.getStringList("Groups");
     }
 
